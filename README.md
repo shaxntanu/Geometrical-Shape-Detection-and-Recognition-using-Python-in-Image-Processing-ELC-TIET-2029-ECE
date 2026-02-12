@@ -1,4 +1,7 @@
 # Geometrical Shape Detection and Recognition using Python
+
+![Shape Detection Output](4shapes.jpg)
+
 ## ELC Activity - TIET 2029 ECE
 
 This project implements a computer vision pipeline to detect and recognize geometrical shapes (Triangles, Rectangles, Pentagons, Hexagons, and Circles) from images using OpenCV, NumPy, Matplotlib, and Pillow.
