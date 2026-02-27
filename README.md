@@ -49,11 +49,14 @@ python shape_detection.py
 jupyter notebook shape_detection.ipynb
 ```
 
-The notebook is organized into 4 cells:
+The notebook is organized into 7 cells with intermediate visualizations:
 - **Cell 1**: Import libraries
-- **Cell 2**: Load image, preprocess, and display grayscale
-- **Cell 3**: Detect and classify shapes
-- **Cell 4**: Display final result with labeled shapes
+- **Cell 2**: Load image and convert to grayscale (with visualization)
+- **Cell 3**: Apply binary thresholding (with visualization)
+- **Cell 4**: Apply morphological closing (with visualization)
+- **Cell 5**: Detect contours
+- **Cell 6**: Classify shapes based on vertices
+- **Cell 7**: Display final result with labeled shapes
 
 ## How It Works
 
@@ -94,6 +97,8 @@ Based on vertex count:
 
 The program processes the input image and outputs:
 - Grayscale conversion visualization
+- Binary threshold image visualization
+- Morphological closing result visualization
 - Detected shapes with color-coded labels
 - Console output showing detected shape types and vertex counts
 
