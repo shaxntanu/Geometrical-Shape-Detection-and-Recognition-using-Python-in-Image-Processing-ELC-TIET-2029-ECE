@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 from matplotlib import image as mpimg
 from PIL import Image
 
-# Load image
+# Load and Preprocess Image
 image_path = '4shapes.jpg'
 img = Image.open(image_path)
 img_array = np.array(img)
@@ -19,7 +19,7 @@ plt.title('Grayscale Image')
 plt.axis('off')
 plt.show()
 
-# Apply thresholding
+# Thresholding
 _, thresh = cv2.threshold(gray, 127, 255, cv2.THRESH_BINARY_INV)
 
 # Display binary threshold image
@@ -29,7 +29,7 @@ plt.title('Binary Threshold Image')
 plt.axis('off')
 plt.show()
 
-# Apply morphological operations
+# Morphological operations
 kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (3, 3))
 morph = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel, iterations=2)
 
@@ -42,12 +42,11 @@ plt.show()
 
 # Find contours
 contours, _ = cv2.findContours(morph, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+output_image = img_array.copy()
 
 print(f"Found {len(contours)} contours")
 
-output_image = img_array.copy()
-
-# Shape classification
+# Shape Detection and Classification
 for i, contour in enumerate(contours):
     area = cv2.contourArea(contour)
     
@@ -86,7 +85,7 @@ for i, contour in enumerate(contours):
         
         print(f"Detected: {shape_name} with {vertices} vertices")
 
-# Display final output
+# Display Final Result
 output_rgb = cv2.cvtColor(output_image, cv2.COLOR_BGR2RGB)
 plt.figure(figsize=(12, 8))
 plt.imshow(output_rgb)
