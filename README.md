@@ -1,28 +1,75 @@
-# Geometrical Shape Detection and Recognition using Python
-
-![Shape Detection Output](4shapes.jpg)
-
+# Image Analysis Project Collection
 ## ELC Activity - TIET 2029 ECE
 
-This project implements a computer vision pipeline to detect and recognize geometrical shapes (Triangles, Rectangles, Pentagons, Hexagons, and Circles) from images using OpenCV, NumPy, Matplotlib, and Pillow.
-
-## Features
-
-- **Image Preprocessing**: Grayscale conversion and binary thresholding
-- **Morphological Operations**: Noise reduction and edge refinement using closing operations
-- **Contour Detection**: Automatic shape boundary detection
-- **Shape Recognition**: Vertex-based classification system
-- **Visual Output**: Color-coded shape labeling with matplotlib visualization
+This project contains 6 separate image analysis implementations using OpenCV, NumPy, Matplotlib, and Pillow. Each analysis is organized in its own folder with dedicated Python scripts and Jupyter notebooks.
 
 ## Project Structure
 
 ```
-├── shape_detection.py          # Python script version
-├── shape_detection.ipynb       # Jupyter notebook with step-by-step cells
-├── 4shapes.jpg                 # Sample input image
-├── requirements.txt            # Python dependencies
-└── README.md                   # Project documentation
+├── 4shapes/                    # Geometric shape detection
+│   ├── 4shapes.jpg
+│   ├── shape_detection.py
+│   └── shape_detection.ipynb
+│
+├── cookie/                     # Cookie shape analysis
+│   ├── cookie.jpg
+│   ├── cookie_analysis.py
+│   └── cookie_analysis.ipynb
+│
+├── ice_cream_cone/            # Ice cream cone detection
+│   ├── softy.jpg
+│   ├── ice_cream_analysis.py
+│   └── ice_cream_analysis.ipynb
+│
+├── traffic_cone/              # Traffic cone detection
+│   ├── traffic.jpg
+│   ├── traffic_cone_analysis.py
+│   └── traffic_cone_analysis.ipynb
+│
+├── tree/                      # Christmas tree shape detection
+│   ├── tree.png
+│   ├── tree_analysis.py
+│   └── tree_analysis.ipynb
+│
+├── watch/                     # Smartwatch display analysis
+│   ├── watch.jpeg
+│   ├── watch_analysis.py
+│   └── watch_analysis.ipynb
+│
+└── requirements.txt           # Shared dependencies for all projects
 ```
+
+## Analysis Descriptions
+
+### 1. 4shapes - Geometric Shape Detection
+Detects and classifies geometric shapes (triangles, rectangles, pentagons, hexagons, circles) using contour approximation and vertex counting.
+
+**Techniques:** Grayscale conversion, binary thresholding, morphological operations, contour detection, vertex-based classification
+
+### 2. Cookie - Circular Shape Analysis
+Analyzes cookie shape using circle detection and texture analysis.
+
+**Techniques:** Hough Circle Transform, Gaussian blur, edge detection, texture analysis
+
+### 3. Ice Cream Cone - Cone Shape Detection
+Detects ice cream cone shape and calculates geometric properties.
+
+**Techniques:** Binary thresholding, morphological closing, contour detection, aspect ratio calculation
+
+### 4. Traffic Cone - Color-Based Detection
+Detects traffic cone using color segmentation for orange body and white stripes.
+
+**Techniques:** HSV color space conversion, color range masking, contour detection, edge detection
+
+### 5. Tree - Tree Shape Detection
+Detects the overall Christmas tree shape using color-based segmentation and contour analysis.
+
+**Techniques:** HSV color segmentation, morphological operations, contour detection, shape approximation
+
+### 6. Watch - Circular Feature Detection
+Analyzes smartwatch display by detecting circular features.
+
+**Techniques:** Hough Circle Transform, Gaussian blur, edge detection, contour analysis
 
 ## Installation
 
@@ -39,77 +86,39 @@ pip install -r requirements.txt
 
 ## Usage
 
-### Option 1: Run Python Script
+Each folder contains two ways to run the analysis:
+
+### Option 1: Python Script
 ```bash
+cd <folder_name>
+python <script_name>.py
+```
+
+Example:
+```bash
+cd 4shapes
 python shape_detection.py
 ```
 
-### Option 2: Use Jupyter Notebook
+### Option 2: Jupyter Notebook
 ```bash
-jupyter notebook shape_detection.ipynb
+cd <folder_name>
+jupyter notebook <notebook_name>.ipynb
 ```
 
-The notebook is organized into 4 cells:
-- **Cell 1**: Import libraries
-- **Cell 2**: Load image, preprocess (grayscale, threshold, morphological operations), and display intermediate results
-- **Cell 3**: Detect and classify shapes
-- **Cell 4**: Display final result with labeled shapes
-
-## How It Works
-
-### 1. Preprocessing
-- Load image and convert to grayscale
-- Apply inverse binary thresholding (threshold=127)
-
-### 2. Morphological Operations
-- Use 3x3 rectangular kernel
-- Apply closing operation (2 iterations) to connect edges
-
-### 3. Shape Detection
-- Find contours using `cv2.findContours()`
-- Approximate contours with `cv2.approxPolyDP()`
-- Filter out noise (area < 1000 pixels)
-
-### 4. Shape Recognition
-Based on vertex count:
-- **3 vertices** → Triangle (Red)
-- **4 vertices** → Rectangle (Green)
-- **5 vertices** → Pentagon (Cyan)
-- **6 vertices** → Hexagon (Magenta)
-- **Other** → Circle (Blue)
-
-### 5. Visualization
-- Draw colored contours around detected shapes
-- Label each shape at its centroid
-- Display using matplotlib
+Example:
+```bash
+cd cookie
+jupyter notebook cookie_analysis.ipynb
+```
 
 ## Dependencies
 
-- `opencv-contrib-python` >= 4.5.0
-- `numpy` >= 1.19.0
-- `matplotlib` >= 3.3.0
-- `Pillow` >= 8.0.0
-
-## Sample Output
-
-The program processes the input image and outputs:
-- Grayscale conversion visualization
-- Binary threshold image visualization
-- Morphological closing result visualization
-- Detected shapes with color-coded labels
-- Console output showing detected shape types and vertex counts
-
-## Troubleshooting
-
-**Issue**: Shapes not detected correctly
-- **Solution**: Adjust the threshold value (line with `cv2.threshold()`)
-- Try values between 100-150 depending on image brightness
-
-**Issue**: Too many false detections
-- **Solution**: Increase the minimum area filter (currently 1000)
-
-**Issue**: Vertex count incorrect
-- **Solution**: Adjust epsilon value in `cv2.approxPolyDP()` (currently 0.04)
+All projects use the same dependencies (defined in root requirements.txt):
+- opencv-contrib-python >= 4.5.0
+- numpy >= 1.19.0
+- matplotlib >= 3.3.0
+- Pillow >= 8.0.0
 
 ## Course Information
 
@@ -117,13 +126,8 @@ The program processes the input image and outputs:
 - **Institution**: TIET (Thapar Institute of Engineering and Technology)
 - **Year**: 2029
 - **Department**: ECE (Electronics and Communication Engineering)
+- **Date**: February 12, 2026
 
 ## License
 
-This project is created for educational purposes as part of the ELC curriculum.
-
-## Author
-
-Created for ELC Activity 2029 - ECE Department, TIET
-
-**Date**: February 12, 2026
+This project is created for educational purposes as part of the TIET ELC curriculum.
