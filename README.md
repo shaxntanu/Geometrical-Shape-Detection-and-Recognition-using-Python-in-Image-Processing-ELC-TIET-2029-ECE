@@ -124,7 +124,7 @@ All projects use the same dependencies (defined in root requirements.txt):
 
 - **Course**: ELC Activity
 - **Institution**: TIET (Thapar Institute of Engineering and Technology)
-- **Year**: 2029
+- **Year**: BE 29' (Freshman Year)
 - **Department**: ECE (Electronics and Communication Engineering)
 - **Date**: February 12, 2026
 
